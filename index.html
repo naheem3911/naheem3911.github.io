@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Mohammed Abdul Naheem | My World</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #050510;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #6c00ff;
+            filter: blur(180px);
+            opacity: 0.35;
+            top: -150px;
+            left: -150px;
+            z-index: -1;
+            animation: move 8s infinite alternate;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #00c8ff;
+            filter: blur(180px);
+            opacity: 0.25;
+            bottom: -150px;
+            right: -150px;
+            z-index: -1;
+            animation: move2 8s infinite alternate;
+        }
+
+        @keyframes move {
+            from {
+                transform: translate(0, 0);
+            }
+            to {
+                transform: translate(200px, 150px);
+            }
+        }
+
+        @keyframes move2 {
+            from {
+                transform: translate(0, 0);
+            }
+            to {
+                transform: translate(-200px, -150px);
+            }
+        }
+
+        /* Navigation */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 5, 16, 0.75);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        /* Hero */
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .small {
+            font-size: 14px;
+            letter-spacing: 4px;
+            opacity: 0.6;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 9vw, 110px);
+            line-height: 0.95;
+            background: linear-gradient(90deg, #ffffff, #8c7cff, #00d9ff);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: glow 3s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 5px #6c00ff);
+            }
+            to {
+                filter: drop-shadow(0 0 25px #00c8ff);
+            }
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin-top: 25px;
+            font-size: 18px;
+            line-height: 1.7;
+            opacity: 0.7;
+        }
+
+        .buttons {
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 28px;
+            margin: 8px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(90deg, #6c00ff, #008cff);
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .btn2 {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Sections */
+
+        section {
+            padding: 100px 8%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            opacity: 0.5;
+            margin-bottom: 40px;
+        }
+
+        /* Cards */
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255,255,255,0.4);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .icon {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            opacity: 0.6;
+            line-height: 1.6;
+        }
+
+        /* Stats */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .stat h2 {
+            font-size: 45px;
+        }
+
+        .stat p {
+            opacity: 0.5;
+            margin-top: 8px;
+        }
+
+        /* Skills */
+
+        .skill {
+            margin-bottom: 25px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .bar {
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            border-radius: 20px;
+            background: linear-gradient(90deg, #6c00ff, #00d9ff);
+        }
+
+        /* Clock */
+
+        .clock {
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            margin: 30px 0;
+        }
+
+        /* Footer */
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.6;
+        }
+
+        @media(max-width: 600px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav a {
+                margin-left: 8px;
+                font-size: 11px;
+            }
+
+            section {
+                padding: 70px 6%;
+            }
+
+            .section-title {
+                font-size: 35px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav>
+
+        <div class="logo">MAN.</div>
+
+        <div>
+            <a href="#about">About</a>
+            <a href="#interests">Interests</a>
+            <a href="#skills">Skills</a>
+            <a href="#goals">Goals</a>
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <div class="hero">
+
+        <div class="small">WELCOME TO MY DIGITAL WORLD</div>
+
+        <h1>MOHAMMED<br>ABDUL NAHEEM</h1>
+
+        <p>
+            Student • Technology Enthusiast • Cricket Lover • Future Builder
+        </p>
+
+        <div class="buttons">
+
+            <a class="btn" href="#about">
+                Explore My World ↓
+            </a>
+
+            <a class="btn btn2" href="#goals">
+                My Goals
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <h2 class="section-title">About Me</h2>
+
+        <p class="section-subtitle">
+            A little introduction
+        </p>
+
+        <div class="card">
+
+            <h3>Hello 👋</h3>
+
+            <p>
+                I'm Mohammed Abdul Naheem.
+                I'm interested in technology, AI, computers and
+                building cool things. I'm learning new skills and
+                working towards becoming better every day.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- INTERESTS -->
+
+    <section id="interests">
+
+        <h2 class="section-title">My Interests</h2>
+
+        <p class="section-subtitle">
+            Things I enjoy
+        </p>
+
+        <div class="grid">
+
+            <div class="card">
+                <div class="icon">🏏</div>
+                <h3>Cricket</h3>
+                <p>
+                    Following cricket, matches and everything
+                    happening in the world of the game.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">💻</div>
+                <h3>Technology</h3>
+                <p>
+                    Learning about computers, software and
+                    creating things with technology.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🤖</div>
+                <h3>Artificial Intelligence</h3>
+                <p>
+                    Exploring AI and discovering what it can
+                    create and accomplish.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎮</div>
+                <h3>Gaming</h3>
+                <p>
+                    Gaming, exploring new worlds and having fun.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <section>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h2>16</h2>
+                <p>Years of Life</p>
+            </div>
+
+            <div class="stat">
+                <h2>∞</h2>
+                <p>Ideas</p>
+            </div>
+
+            <div class="stat">
+                <h2>24/7</h2>
+                <p>Learning Mode</p>
+            </div>
+
+            <div class="stat">
+                <h2>🚀</h2>
+                <p>Future</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <h2 class="section-title">My Skills</h2>
+
+        <p class="section-subtitle">
+            Currently learning and improving
+        </p>
+
+        <div class="skill">
+
+            <div class="skill-name">
+                <span>Technology</span>
+                <span>70%</span>
+            </div>
+
+            <div class="bar">
+                <div class="progress" style="width:70%"></div>
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-name">
+                <span>HTML</span>
+                <span>60%</span>
+            </div>
+
+            <div class="bar">
+                <div class="progress" style="width:60%"></div>
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-name">
+                <span>Creativity</span>
+                <span>85%</span>
+            </div>
+
+            <div class="bar">
+                <div class="progress" style="width:85%"></div>
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-name">
+                <span>Learning</span>
+                <span>95%</span>
+            </div>
+
+            <div class="bar">
+                <div class="progress" style="width:95%"></div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GOALS -->
+
+    <section id="goals">
+
+        <h2 class="section-title">My Goals 🎯</h2>
+
+        <p class="section-subtitle">
+            Where I'm heading
+        </p>
+
+        <div class="grid">
+
+            <div class="card">
+                <div class="icon">📚</div>
+                <h3>Ace My Exams</h3>
+                <p>
+                    Study consistently and give my best in my exams.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">💻</div>
+                <h3>Master Technology</h3>
+                <p>
+                    Learn programming and become better with computers.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🚀</div>
+                <h3>Build Projects</h3>
+                <p>
+                    Create websites, apps and interesting technology projects.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CLOCK -->
+
+    <section>
+
+        <h2 class="section-title" style="text-align:center;">
+            Current Time
+        </h2>
+
+        <div class="clock" id="clock">
+            00:00:00
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            Built by Mohammed Abdul Naheem 🚀
+        </p>
+
+        <p style="margin-top:10px;">
+            Keep learning. Keep building. Keep growing.
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function updateClock() {
+
+            let now = new Date();
+
+            let time = now.toLocaleTimeString();
+
+            document.getElementById("clock").innerText = time;
+
+        }
+
+        setInterval(updateClock, 1000);
+
+        updateClock();
+
+    </script>
+
+</body>
+</html>
